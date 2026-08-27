@@ -1,0 +1,13 @@
+{
+  "name": "simple-chatroom-pwa",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "deploy": "wrangler deploy",
+    "login": "wrangler login",
+    "dev": "wrangler dev"
+  },
+  "devDependencies": {
+    "wrangler": "^3.72.0"
+  }
+}
