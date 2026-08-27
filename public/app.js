@@ -83,7 +83,7 @@ var line=document.createElement('div');line.className='msg-line';
 var nm=document.createElement('span');nm.className='msg-name';nm.textContent=isSelf?'我':msg.name;if(msg.name===myName){nm.style.cursor='pointer';nm.title='Click to rename';nm.addEventListener('click',function(ev){ev.stopPropagation();showRenameModal()})};line.appendChild(nm);
 body.appendChild(line);
 var bub=document.createElement('div');bub.className='msg-bubble';
-if(msg.img){bub.style.background='transparent';bub.style.boxShadow='none';var isWechatEmoji=msg.img.indexOf('/emojis/')===0;var img=document.createElement('img');img.src=msg.img;img.style.maxWidth=isWechatEmoji?'20px':'180px';img.style.maxHeight=isWechatEmoji?'20px':'180px';img.style.borderRadius='8px';img.style.cursor='pointer';img.onclick=function(){openImgViewer(msg.img)};bub.appendChild(img)}
+if(msg.img){bub.style.background='transparent';bub.style.boxShadow='none';var isWechatEmoji=msg.img.indexOf('/emojis/')!==-1;var img=document.createElement('img');img.src=msg.img;img.style.maxWidth=isWechatEmoji?'20px':'180px';img.style.maxHeight=isWechatEmoji?'20px':'180px';img.style.borderRadius='8px';img.style.cursor='pointer';img.onclick=function(){openImgViewer(msg.img)};bub.appendChild(img)}
 else{
 if(isSingleEmoji(msg.text)){
 bub.style.background='transparent';
@@ -331,7 +331,7 @@ img.onerror=function(){var span=document.createElement('span');span.textContent=
 return img
 }
 function wechatEmojiUrl(emoji){
-return '/emojis/'+emoji.path
+return location.origin+'/emojis/'+emoji.path
 }
 function findWechatEmoji(name){
 for(var i=0;i<WECHAT_EMOJIS.length;i++){
